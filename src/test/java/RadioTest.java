@@ -133,20 +133,20 @@ public class RadioTest {
     }
 
     @Test
-    public void setCurrentVolumeNegative() {
+    public void setCurrentVolumeLarge() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(-10);
+        radio.setCurrentVolume(105);
 
-        int expected = 0;
+        int expected = 100;
         int actual = radio.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
-    public void setCurrentVolumeLarge() {
+    public void setCurrentVolumeNegative() {
         Radio radio = new Radio();
-        radio.setCurrentVolume(200);
+        radio.setCurrentVolume(-10);
 
         int expected = 0;
         int actual = radio.getCurrentVolume();

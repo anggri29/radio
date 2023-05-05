@@ -1,54 +1,53 @@
 public class Radio {
-
     private int currentStation;
-    private int currentVolume;
+    private int defaultVolume;
+    private int numberOfStations;
 
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio() {
+        this.numberOfStations = 10;
+        this.currentStation = 0;
+        this.defaultVolume = 50;
+    }
+    public void setCurrentStation(int station) {
+        if (station >= 0 && station < numberOfStations) {
+            this.currentStation = station;
+        }
     }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void setCurrentStation(int newStation) {
-        if (newStation < 0 || newStation > 9) {
-            return;
-        }
-        currentStation = newStation;
-    }
-
     public void nextStation() {
-        if (currentStation == 9) {
-            currentStation = 0;
-        } else {
-            currentStation++;
-        }
+        currentStation = (currentStation + 1) % numberOfStations;
     }
 
     public void prevStation() {
-        if (currentStation == 0) {
-            currentStation = 9;
+        currentStation = (currentStation - 1 + numberOfStations) % numberOfStations;
+    }
+
+    public void setCurrentVolume(int volume) {
+        if (volume < 0) {
+            defaultVolume = 0;
+        } else if (volume > 100) {
+            defaultVolume = 100;
         } else {
-            currentStation--;
+            defaultVolume = volume;
         }
+    }
+    public int getCurrentVolume() {
+        return defaultVolume;
     }
 
     public void increaseVolume() {
-        if (currentVolume < 100) {
-            currentVolume++;
+        if (defaultVolume < 100) {
+            defaultVolume++;
         }
     }
 
     public void decreaseVolume() {
-        if (currentVolume > 0) {
-            currentVolume--;
-        }
-    }
-
-    public void setCurrentVolume(int volume) {
-        if (volume >= 0 && volume <= 100) {
-            currentVolume = volume;
+        if (defaultVolume > 0) {
+            defaultVolume--;
         }
     }
 }
