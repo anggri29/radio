@@ -5,9 +5,16 @@ public class Radio {
 
     public Radio() {
         this.numberOfStations = 10;
-        this.currentStation = 0;
-        this.defaultVolume = 50;
     }
+
+    public Radio(int numberOfStations) {
+        this.numberOfStations = numberOfStations;
+    }
+
+    public int getNumberOfStations() {
+        return numberOfStations;
+    }
+
     public void setCurrentStation(int station) {
         if (station >= 0 && station < numberOfStations) {
             this.currentStation = station;
@@ -35,6 +42,7 @@ public class Radio {
             defaultVolume = volume;
         }
     }
+
     public int getCurrentVolume() {
         return defaultVolume;
     }

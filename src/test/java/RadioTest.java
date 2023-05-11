@@ -153,4 +153,14 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void getNumberOfStations() {
+        Radio radio = new Radio(20);
+
+        int expected = 20;
+        int actual = radio.getNumberOfStations();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
